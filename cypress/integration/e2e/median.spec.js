@@ -52,4 +52,9 @@ describe("Median App", () => {
         })
     })
 
+    // this is afailing test, 
+    // users should not be able to submit without an input
+    it('Should not allow submit before providing an input', () => {
+        cy.get(":submit").should('be.disabled')
+    })
 })
