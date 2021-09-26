@@ -22,4 +22,23 @@ describe("Median App", () => {
         .should('have.value', 10)
     })
 
+    it('Should hide Spinner before submit', () => {
+        cy.get('.loader')
+        .should('have.class', 'hidden')
+        .should('not.be.visible')
+    })
+
+    it('Should not accept larg number', () =>{
+        cy.get('input')
+        .type(900000000000)
+
+        cy.get('form')
+        .submit()
+
+        cy.on('window:alert', (alertMassage) =>{
+            expect(alertMassage).to.equal('Number exceeds limit')
+
+        })
+    })
+
 })
