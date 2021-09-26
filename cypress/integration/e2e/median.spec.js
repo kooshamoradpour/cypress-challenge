@@ -28,6 +28,17 @@ describe("Median App", () => {
         .should('not.be.visible')
     })
 
+    it('Should calculate median', () =>{
+        cy.get('input')
+        .type(17)
+
+        cy.get('form')
+        .submit()
+
+        cy.get('h2')
+        .contains('The median is: [5,7]')
+    })
+
     it('Should not accept larg number', () =>{
         cy.get('input')
         .type(900000000000)
